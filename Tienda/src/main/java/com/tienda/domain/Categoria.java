@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,6 +21,10 @@ public class Categoria implements Serializable {
 	private String descripcion;
 	private String rutaImagen;
 	private boolean activo;
+
+	@OneToMany
+	@JoinColumn(name = "id_producto", updatable = false)
+	List<Producto> productos;
 
 
 	public Categoria(String categoria, boolean activo) {
